@@ -1,0 +1,31 @@
+
+.btn[data-v-ca859fb4] {
+  border: 1px solid #dcdfe6;
+}
+.btn--default[data-v-ca859fb4] {
+  background-color: #fff;
+}
+.btn--primary[data-v-ca859fb4] {
+  background-color: #409eff;
+}
+.btn--success[data-v-ca859fb4] {
+  background-color: #67c23a;
+}
+.btn--danger[data-v-ca859fb4] {
+  background-color: #f56c6c;
+}
+
+
+.cell[data-v-c4f51bb4] {
+  width: 30%;
+}
+.cell--border[data-v-c4f51bb4] {
+  border: 1px solid #333;
+}
+.cell--light[data-v-c4f51bb4] {
+  background-color: #fff;
+}
+.cell--dark[data-v-c4f51bb4] {
+  background-color: black;
+  color: white;
+}

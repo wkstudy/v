@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ES6",
+    "moduleResolution": "node",
+    // "skipLibCheck": true, // 第三方库编译失败添加
+    "strict": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "rootDir": "./",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "dom"],
+    "declaration": true,
+    "noImplicitAny": false // rollup ts插件打包失败设置
+  },
+  "exclude": ["dist", "lib", "es", "node_modules"],
+  "include": ["packages", "typings", "examples"] // 自己定义的类型文件可以放在这里或者 file 中，typeroot 、types字段本身只针对npm安装的模块  https://segmentfault.com/a/1190000013514680###
+}
