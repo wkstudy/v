@@ -9,8 +9,8 @@ vue3+ts+vite
 ### 安装
 
 ```
-npm i v
-yarn add v
+npm i useful-ui
+yarn add useful-ui
 ```
 
 ### 全局引入
@@ -19,12 +19,85 @@ yarn add v
 import { createApp } from "vue";
 import App from "./App.vue";
 import v from "v";
-import "v/lib/index.css"
+import "v/es/index.css"
 
 createApp(App).use(v).mount("#app");
 ```
 
 ### 按需引入(支持)
+
+默认支持基于 ES modules 的 tree shaking，对于 js 部分，直接引入 import { VButton } from 'useful-ui' 就会有按需加载的效果。
+
+#### vite
+
+1. 安装`vite-plugin-style-import`
+
+```
+npm i vite-plugin-style-import -D
+```
+
+2. vite.config.ts 添加配置
+
+```
+import style from "vite-plugin-style-import";
+...
+export default defineConfig({
+  ...
+  plugins: [
+    style({
+      libs: [
+        // 如果没有你需要的resolve，可以在lib内直接写，也可以给我们提供PR
+        {
+          libraryName: "useful-ui",
+          esModule: true,
+          resolveStyle: (name) => {
+            return `useful-ui/es/index.css`;
+          },
+        },
+      ],
+    }),
+  ]
+})
+```
+
+3. 页面直接使用相应组件即可
+
+```
+import { VButton} from 'v''
+
+```
+
+#### webpack
+
+1. 安装`babel-plugin-import`
+
+```
+npm install babel-plugin-import --save-dev
+```
+
+2. 在`.babelrc` 或 `babel.config.js` 中添加配置：
+   （随着组件库的丰富，这里的配置可能需要更新）
+
+```
+plugins: [
+    [
+      "import",
+      {
+        libraryName: "useful-ui",
+        libraryDirectory: "es/packages",
+        camel2DashComponentName: false,
+        customName: (name) => {
+          return `useful-ui/es/packages/${name.slice(1).toLowerCase()}`;
+        },
+        style: () => {
+          return "useful-ui/es/index.css";
+        },
+      },
+    ],
+  ],
+```
+
+3. 页面直接使用相应组件即可
 
 ```
 import { VButton} from 'v''
